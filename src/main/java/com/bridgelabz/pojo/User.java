@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+ 
 
 import com.opensymphony.xwork2.validator.annotations.EmailValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
@@ -20,11 +21,11 @@ public class User {
 	private long userId;
 	@Column(name="name")
 	private String name;
-	@Column(name="email")
+	@Column(unique =true,name = "email" )
 	private String email;
 	@Column(name="password")
 	private String password;
-	@Column(name="mobileno")
+	@Column(name = "mobileno")
 	private String mobileno;
 	
 	public User(long userId, String name, String email, String password, String mobileno) {

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,7 @@
   </div>
  
 	<hr>
-<h3 style="text-align:center;padding-right: 5%;">Registration is Successfull ...</h3>
+<h3 style="text-align:center;padding-right: 5%;">Login is Successfull ...</h3>
 <h4 style="text-align:center;padding-right: 5%;">Welcome: <s:property value="name"/>  </h4>
 <br>
 

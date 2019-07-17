@@ -4,15 +4,17 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-
+import org.hibernate.Transaction;
+  
 import com.bridgelabz.pojo.User;
 import com.bridgelabz.utility.HibernateUtil;
+import com.bridgelabz.utility.MailSender;
 
 public class UserServcieDaoImp implements IUserServiceDao
 {
 	
 	private static UserServcieDaoImp userServcieDaoImp;
-
+	MailSender mailSender = new MailSender();
 	private UserServcieDaoImp() {
 
 	}
@@ -51,5 +53,35 @@ public class UserServcieDaoImp implements IUserServiceDao
 		session.close();
 		return false;
 	}
+
+	public Boolean forget(String email) {
+		Session session=HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		String sql = " from User u where u.email=:email";
+		Query query = session.createQuery(sql);
+		query.setParameter("email", email);
+
+		User user = (User) query.uniqueResult();
+		if (user != null) {
+			mailSender.sendMail(email, user.getUserId()+"enter the code to change the passcode",   "http://localhost:8080/STRUTS/reset.jsp");
+			session.close();
+			return true;
+		}
+		session.close();
+		return false;
+	}
+
+	public Boolean reset(long userId, String password) {
+		 Session  session=HibernateUtil.getSessionFactory().openSession();
+			User user = (User) session.get(User.class, userId);
+			user.setPassword(password);
+			Transaction transaction = session.beginTransaction();
+			String username = (String) session.save(user);
+			System.out.println("reset password : "+username);
+			transaction.commit();
+			session.close();
+		return null;
+	}
+
 
 }

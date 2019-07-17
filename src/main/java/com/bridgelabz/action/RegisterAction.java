@@ -2,12 +2,12 @@ package com.bridgelabz.action;
 
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
-
 import com.bridgelabz.dao.IUserServiceDao;
 import com.bridgelabz.dao.UserServcieDaoImp;
 import com.bridgelabz.pojo.User;
+import com.bridgelabz.utility.MailSender;
 
-@Action(value = "register", results = { @Result(name = "SUCCESS", location = "/success.jsp"),
+@Action(value = "register", results = { @Result(name = "SUCCESS", location = "/success-registration.jsp"),
 
 		@Result(name = "ERROR", location = "welcome.jsp") })
 public class RegisterAction {
@@ -18,6 +18,7 @@ public class RegisterAction {
 	private String mobileno;
 	
 	private IUserServiceDao serviceDao = UserServcieDaoImp.getinstance();
+	MailSender mailSender = new MailSender();
 	
 	public String getName() {
 		return name;
@@ -46,13 +47,20 @@ public class RegisterAction {
 	}
 	public String execute()
 	{
+		System.out.println("aaa");
+	
 		User user = new User();
 		user.setName(getName());
 		user.setEmail(getEmail());
 		user.setPassword(getPassword());
 		user.setMobileno(getMobileno());
-		serviceDao.register(user);
-		return "SUCCESS";
+		if (serviceDao.register(user) != null) {
+			mailSender.sendMail(user.getEmail(), "welcome", user.toString());
+			System.out.println("execute called");
+			return "SUCCESS";
+		}
+		return "ERROR";
+		 
 		
 	}
 }

@@ -3,27 +3,23 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 <div class="header">
   <a href="index.jsp" class="logo">StrutsApp</a>
-   
 </div>
 <hr>
 <br>
  <h1 style="text-align:center; ">Welcome To Login...</h1>
 	<s:form method="post" action="login">
 		<table align="center" style="color: green">
-			 
 			<tr>
-
-				<td><s:textfield name="Email" label="Email" required="required"></s:textfield></td>
+				<td><s:textfield name="email" label="Email" required="required"></s:textfield></td>
 			</tr>
 			<tr>
-
 				<td><s:password name="password" label="Password"
 						required="required"></s:password></td>
 			</tr>
@@ -31,12 +27,10 @@
 				<td></td>
 				<td><s:submit value="login"></s:submit></td>
 			</tr>
-
-
 		</table>
 	</s:form>
 	<p align="center">
-		<a href="ForgetPassword.jsp"><input type="submit"
+		<a href="forget.jsp"><input type="submit"
 			value="ForgotPassword"></a>
 	</p>
 </body>

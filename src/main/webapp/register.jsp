@@ -4,37 +4,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
- <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="style.css">
 <title>User Registration</title>
 </head>
 <body>
-<div class="header">
-  <a href="index.jsp" class="logo">StrutsApp</a>
-   
-</div>
-<hr>
-<br>
-<h1 style="text-align:center">Welcome To Registration...</h1>
+	<div class="header">
+		<a href="index.jsp" class="logo">StrutsApp</a>
+
+	</div>
+	<hr>
+	<br>
+	<h1 style="text-align: center">Welcome To Registration...</h1>
 
 	<div align="center">
 		<s:form action="register">
 			<table align="center" style="color: green">
-				<!-- <tr>
-					<td colspan="2" align="center" style="color: green"><b>
-							Registration</b></td>
-				</tr> -->
 				<tr>
-
 					<td><s:textfield name="name" label="Name" required="required"></s:textfield></td>
 				</tr>
-				 
-			   <tr>
 
+				<tr>
 					<td><s:textfield name="email" label="Email"
 							required="required"></s:textfield></td>
 				</tr>
 				<tr>
-
 					<td><s:password name="password" label="Password"
 							required="required"></s:password></td>
 				</tr>
@@ -42,7 +35,6 @@
 					<td><s:textfield name="mobileno" label="MobileNo"
 							required="required"></s:textfield></td>
 				</tr>
-				
 				<tr>
 					<td align="center"><s:submit value="register"></s:submit></td>
 					<td align="center"><input type="reset" name="Reset Form"></td>

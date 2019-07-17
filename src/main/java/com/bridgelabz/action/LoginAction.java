@@ -6,7 +6,7 @@ import org.apache.struts2.convention.annotation.Result;
 import com.bridgelabz.dao.IUserServiceDao;
 import com.bridgelabz.dao.UserServcieDaoImp;
 
-@Action(value = "login", results = { @Result(name = "SUCCESS", location = "/success.jsp"),
+@Action(value = "login", results = { @Result(name = "SUCCESS", location = "/success-login.jsp"),
 
 		@Result(name = "ERROR", location = "login.jsp") })
 
